@@ -18,7 +18,7 @@ public class Category {
                 fetch = FetchType.LAZY)
     //mappedBy category because in product class there was category
     //cascade will help when you will make changes in the Product.java, they will
-    //also be reflected in Category.java too
+    //also be reflected/cascaded in Category.java too
     private Set<Product> products;
     //Here we have id, name and products which have OneToMany relationship with Product Entity in Product class
 }
