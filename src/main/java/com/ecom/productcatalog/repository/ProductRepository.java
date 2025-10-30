@@ -11,5 +11,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //Why we used Product here because we are working with the Product Entity
     // Why Long because type of the Primary key is Long(which is id)
 
-    List<Product> findByCategory(Long categoryId);
+    List<Product> findByCategory_Id(Long categoryId);
 }
