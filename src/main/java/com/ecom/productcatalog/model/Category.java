@@ -1,5 +1,6 @@
 package com.ecom.productcatalog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,6 +20,9 @@ public class Category {
     //mappedBy category because in product class there was category
     //cascade will help when you will make changes in the Product.java, they will
     //also be reflected/cascaded in Category.java too
+    @JsonIgnore
+    //Error cause before: Product and Category were referring to each other endlessly.
+    //How Error fixed: @JsonIgnore told JSON to ignore one side, breaking the loop.
     private Set<Product> products;
     //Here we have id, name and products which have OneToMany relationship with Product Entity in Product class
 }

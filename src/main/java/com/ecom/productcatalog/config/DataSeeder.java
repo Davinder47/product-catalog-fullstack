@@ -12,13 +12,13 @@ import java.util.Arrays;
 @Component
 //We need a piece of code to be executed immediately after the application started
 //We will make use of CommandLineRunner
-public class DatSeeder implements CommandLineRunner {
+public class DataSeeder implements CommandLineRunner {
 
     //We will work with the DB, so we need Repositories
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
 
-    public DatSeeder(ProductRepository productRepository, CategoryRepository categoryRepository) {
+    public DataSeeder(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
     }
@@ -58,11 +58,40 @@ public class DatSeeder implements CommandLineRunner {
         categoryRepository.saveAll(Arrays.asList(electronics,home,clothing));
 
         //3. Then Create Products
+        //Product Name: Phone
         Product phone = new Product();
         phone.setName("SmartPhone");
-        phone.setDescription("Latest mode smartphone with amazing features");
-        phone.setImageUrl("");
+        phone.setDescription("Latest mode smartphone with amazing features.");
+        phone.setImageUrl("https://placehold.co/600x400");
         phone.setPrice(699.99);
         phone.setCategory(electronics);
+
+        //Product Name: Laptop
+        Product laptop = new Product();
+        laptop.setName("Laptop");
+        laptop.setDescription("High performance laptop for work and gameplay.");
+        laptop.setImageUrl("https://placehold.co/600x400");
+        laptop.setPrice(999.99);
+        laptop.setCategory(electronics);
+
+        //Product Name: Jacket
+        Product jacket = new Product();
+        jacket.setName("Winter Jacket");
+        jacket.setDescription("Comfortable and warm jacket, specialized for winters. ");
+        jacket.setImageUrl("https://placehold.co/600x400");
+        jacket.setPrice(99.99);
+        jacket.setCategory(clothing);
+
+        //Product Name: Blender
+        Product blender = new Product();
+        blender.setName("Blender");
+        blender.setDescription("High-speed blender for smoothies and shakes");
+        blender.setImageUrl("https://placehold.co/600x400");
+        blender.setPrice(89.99);
+        blender.setCategory(home);
+
+        //Now we need to save all the products, for this create Repo
+        productRepository.saveAll(Arrays.asList(phone,laptop,jacket,blender));
+
     }
 }
