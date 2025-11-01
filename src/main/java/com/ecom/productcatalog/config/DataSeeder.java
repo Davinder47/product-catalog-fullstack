@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 @Component
 //We need a piece of code to be executed immediately after the application started
-//We will make use of CommandLineRunner
+//We will make use of CommandLineRunner(it's an interface which uses run method for doing this)
 public class DataSeeder implements CommandLineRunner {
 
     //We will work with the DB, so we need Repositories
@@ -32,6 +32,8 @@ public class DataSeeder implements CommandLineRunner {
 
         //When the App starts we need to:
         //1. Clear all existing data(includes preloaded or existing DB)
+        //If you try to make any changes in workbench with data, below two
+        //lines will remove those changes, and repopulate the data again
         productRepository.deleteAll();
         categoryRepository.deleteAll();
 
