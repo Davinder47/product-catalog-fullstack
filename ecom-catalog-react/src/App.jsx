@@ -42,6 +42,15 @@ const handleCategorySelect = (categoryId) => {
   setSelectedCategory(categoryId ? Number(categoryId) : null);
 };
 
+const filteredProducts = products
+            .filter(product => {
+              return (
+                (selectedCategory ? product.category.id === selectedCategory : true)
+                &&
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())
+              )
+            })
+
 
   return (
     // {/* To display the data on the frontend */}
@@ -76,9 +85,9 @@ const handleCategorySelect = (categoryId) => {
       </div>
 
       <div>
-        {products.length ? (
+        {filteredProducts.length ? (
           //Display Products
-          <ProductList products={products}/>
+          <ProductList products={filteredProducts}/>
         ) : (
           <p>No Products Found</p>
         )}
