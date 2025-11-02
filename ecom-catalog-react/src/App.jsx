@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import ProductList from './ProductList';
+import CategoryFilter from './CategoryFilter';
 
 function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const [selected, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
 
@@ -37,6 +38,11 @@ const handleSortChange = (event) => {
   setSortOrder(event.target.value);
 };
 
+const handleCategorySelect = (categoryId) => {
+  setSelectedCategory(categoryId ? Number(categoryId) : null);
+};
+
+
   return (
     // {/* To display the data on the frontend */}
     <div className='container'>
@@ -49,7 +55,7 @@ const handleSortChange = (event) => {
         {/* div for Functionality for filter searching in sorting */}
         <div className='col-md-3 col-sm-12 mb-2'>
           {/* div for category filter */}
-          <p>Category Filter</p>
+          <CategoryFilter categories={categories} onSelect={handleCategorySelect}/>
         </div>
 
         <div className='col-md-5 col-sm-12 mb-2'>
@@ -62,8 +68,8 @@ const handleSortChange = (event) => {
 
         <div className='col-md-4 col-sm-12 mb-2'>
           <select className='form-control' onChange={handleSortChange}>
-            <option vlaue="asc">Sort by Price: Low to High</option>
-            <option vlaue="desc">Sort by Price: High to Low</option>
+            <option value="asc">Sort by Price: Low to High</option>
+            <option value="desc">Sort by Price: High to Low</option>
 
           </select>
         </div>
