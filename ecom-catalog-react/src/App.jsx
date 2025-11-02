@@ -50,6 +50,14 @@ const filteredProducts = products
                 product.name.toLowerCase().includes(searchTerm.toLowerCase())
               )
             })
+            .sort((a, b) => {
+              if (sortOrder === "asc"){
+                return a.price - b.price;
+              } else{
+                return b.price - a.price;
+              }
+            });
+
 
 
   return (
