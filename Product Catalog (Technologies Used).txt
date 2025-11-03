@@ -1,0 +1,6 @@
+Backend - Springboot
+Database - MySQL
+Frontend:
+	1. React
+	2. Vite : Works like "create react app" but Vite is fast and a lot of people are using it.
+		  Used for React Development just like "Create React App"
